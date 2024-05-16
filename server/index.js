@@ -49,12 +49,11 @@ app.get('/api/:id', (req, res) => {
   const post = posts.find((p) => p.id === id)
   res.json(post)
 })
+const newId = (lastId += 1)
 app.post('/api/post', (req, res) => {
-  const { title, content, author } = req.body
-
+  lastId = newId
   posts.push(req.body)
-  console.log(posts)
-  res.json(posts)
+  res.json(req.body)
 })
 
 app.listen(port, () => {
