@@ -13,17 +13,14 @@ const EditPage = () => {
     title: title,
     content: content,
     author: author,
+    date: new Date(),
   }
 
   let handleSubmit = (event) => {
     event.preventDefault()
-    console.log(postBlog)
+
     axios
-      .post(`http://localhost:3001/api/post`, {
-        method: 'Post',
-        header: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(postBlog),
-      })
+      .post(`http://localhost:3001/api/post`, postBlog)
       .then((res) => console.log(res.data.body))
       .catch((data) => console.log(data))
     userNavigate('/')
